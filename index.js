@@ -3,6 +3,7 @@
 
 var path = require('path');
 var Funnel = require('broccoli-funnel');
+var BroccoliMergeTrees = require('broccoli-merge-trees')
 var map = require('broccoli-stew').map;
 
 const fastbootTransform = require('fastboot-transform');
@@ -106,7 +107,7 @@ module.exports = {
 
     browserVendorLib = map(browserVendorLib, (content) => `if (typeof FastBoot === 'undefined') { ${content} }`);
 
-    return new mergeTrees([defaultTree, browserVendorLib]);
+    return new BroccoliMergeTrees([defaultTree, browserVendorLib]);
   },
 
   options: {
