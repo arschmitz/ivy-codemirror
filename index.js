@@ -2,6 +2,8 @@
 'use strict';
 
 var path = require('path');
+var map = require('broccoli-stew').map;
+
 const fastbootTransform = require('fastboot-transform');
 
 module.exports = {
@@ -96,6 +98,14 @@ module.exports = {
         'codemirror': ['default']
       }
     });
+  },
+
+  treeForVendor(defaultTree) {
+    var browserVendorLib = new Funnel('vendor/htmlhandlebars.js');
+
+    browserVendorLib = map(browserVendorLib, (content) => `if (typeof FastBoot === 'undefined') { ${content} }`);
+
+    return new mergeTrees([defaultTree, browserVendorLib]);
   },
 
   options: {
