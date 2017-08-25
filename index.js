@@ -2,6 +2,7 @@
 'use strict';
 
 var path = require('path');
+const fastbootTransform = require('fastboot-transform');
 
 module.exports = {
   init: function() {
@@ -126,11 +127,17 @@ module.exports = {
 
         return {
           import: ['lib/codemirror.css'].concat(addonStyles, themeStyles),
-          vendor: [
-            'lib/codemirror.js',
-            'addon/mode/simple.js',
-            'addon/mode/multiplex.js'
-          ].concat(addonScripts, modeScripts, keyMapScripts)
+          vendor: {
+            include: [
+              'lib/codemirror.js',
+              'addon/mode/simple.js',
+              'addon/mode/multiplex.js'
+            ].concat(addonScripts, modeScripts, keyMapScripts),
+
+            processTree(input) {
+              return fastbootTransform(input);
+            }
+          }
         };
       }
     }

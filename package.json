@@ -22,7 +22,8 @@
   "dependencies": {
     "codemirror": "~5.15.0",
     "ember-cli-babel": "^6.0.0",
-    "ember-cli-node-assets": "^0.2.2"
+    "ember-cli-node-assets": "^0.2.2",
+    "fastboot-transform": "^0.1.2"
   },
   "devDependencies": {
     "bower": "^1.8.0",
