@@ -2,6 +2,7 @@
 'use strict';
 
 var path = require('path');
+var Funnel = require('broccoli-funnel');
 var map = require('broccoli-stew').map;
 
 const fastbootTransform = require('fastboot-transform');
