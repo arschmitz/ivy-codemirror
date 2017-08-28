@@ -102,14 +102,6 @@ module.exports = {
     });
   },
 
-  treeForVendor(defaultTree) {
-    var browserVendorLib = new Funnel('vendor');
-
-    browserVendorLib = map(browserVendorLib, (content) => `if (typeof FastBoot === 'undefined') { ${content} }`);
-
-    return new BroccoliMergeTrees([defaultTree, browserVendorLib], { overwrite: true });
-  },
-
   options: {
     nodeAssets: {
       codemirror: function() {
